@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Info Form</title>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 30px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Faculty Feedback Form</h2>
+  <form id="userForm" onsubmit="showData(event)">
+    <label>
+      Name:
+      <input type="text" id="name" required>
+    </label>
+
+    <label>
+      Training:
+      <input type="Training Attended:">Training Attended:</label>
+       <select id="Training Attended" name="Training Attended" required>
+            <option value="">---Select Training---</option>
+            <option value="Python">Python</option>
+            <option value="CSS">CSS</option>
+            <option value="other">Other</option>
+            </select><br><br>
+      </label>
+
+      <label>
+        Overall Rating:
+      <input type="checkbox" name="Rating" value="Reading"> Execellent
+      <input type="checkbox" name="Rating" value="Sports"> Good
+      <input type="checkbox" name="Rating" value="Music">Average
+      <input type="checkbox" name="Rating" value="Music">Poor
+    </label>
+
+    <label>
+      Topics Covered:
+      <input type="checkbox" name="hobby" value="Reading"> Contant Quality
+      <input type="checkbox" name="hobby" value="Sports"> Delivery
+      <input type="checkbox" name="hobby" value="Music"> Interaction
+    </label>
+
+    <label for="comments">Suggestions/Comments:</label>
+    <textarea id="comments" name="comments" rows="4" placeholder="Write your feedback..."></textarea>
+
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function showData(event) {
+      event.preventDefault(); // prevent actual form submission
+
+      let name = document.getElementById("Faculty name").value;
+      let Training = document.querySelector('input[name="gender"]:checked')?.value;
+      let Overall = document.getElementById("country").value;
+
+      let Topics  = [];
+      document.querySelectorAll('input[name="hobby"]:checked').forEach(cb => {
+        hobbies.push(cb.value);
+      });
+
+      let message = `Name: ${name}\nGender: ${Training}\nCountry: ${Overall}\nHobbies: ${Topics.join(", ")}`;
+      alert(message);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 700px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .rating-group {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+
+        .rating-group label {
+            font-weight: normal;
+        }
+
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>Faculty Feedback Form</h2>
+
+    <form action="submit_feedback.php" method="post">
+        <!-- Student Information -->
+        <div class="form-group">
+            <label for="studentName">Student Name:</label>
+            <input type="text" id="studentName" name="studentName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="course">Course / Subject:</label>
+            <input type="text" id="course" name="course" required>
+        </div>
+
+        <div class="form-group">
+            <label for="facultyName">Faculty Name:</label>
+            <input type="text" id="facultyName" name="facultyName" required>
+        </div>
+
+        <!-- Feedback Questions -->
+        <div class="form-group">
+            <label>1. Communication Skills:</label>
+            <div class="rating-group">
+                <label><input type="radio" name="q1" value="Excellent" required> Excellent</label>
+                <label><input type="radio" name="q1" value="Good"> Good</label>
+                <label><input type="radio" name="q1" value="Average"> Average</label>
+                <label><input type="radio" name="q1" value="Poor"> Poor</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>2. Subject Knowledge:</label>
+            <div class="rating-group">
+                <label><input type="radio" name="q2" value="Excellent" required> Excellent</label>
+                <label><input type="radio" name="q2" value="Good"> Good</label>
+                <label><input type="radio" name="q2" value="Average"> Average</label>
+                <label><input type="radio" name="q2" value="Poor"> Poor</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>3. Punctuality and Regularity:</label>
+            <div class="rating-group">
+                <label><input type="radio" name="q3" value="Excellent" required> Excellent</label>
+                <label><input type="radio" name="q3" value="Good"> Good</label>
+                <label><input type="radio" name="q3" value="Average"> Average</label>
+                <label><input type="radio" name="q3" value="Poor"> Poor</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>4. Teaching Methods:</label>
+            <div class="rating-group">
+                <label><input type="radio" name="q4" value="Excellent" required> Excellent</label>
+                <label><input type="radio" name="q4" value="Good"> Good</label>
+                <label><input type="radio" name="q4" value="Average"> Average</label>
+                <label><input type="radio" name="q4" value="Poor"> Poor</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="comments">Additional Comments:</label>
+            <textarea name="comments" id="comments" rows="4" style="width: 100%; padding: 8px; border-radius: 4px;"></textarea>
+        </div>
+
+        <div class="form-group" style="text-align: center;">
+            <button type="submit" class="submit-btn">Submit Feedback</button>
+        </div>
+    </form>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            // Basic validation
+            const studentName = document.getElementById('studentName').value.trim();
+            const course = document.getElementById('course').value.trim();
+            const facultyName = document.getElementById('facultyName').value.trim();
+
+            if (!studentName || !course || !facultyName) {
+                alert('Please fill out all required fields.');
+                return;
+            }
+
+            const radios = document.querySelectorAll('input[type="radio"]:checked');
+            if (radios.length < 4) {
+                alert('Please answer all rating questions.');
+                return;
+            }
+
+            // Display success message
+            alert('Thank you for your feedback!');
+
+            // Optionally, clear the form
+            form.reset();
+        });
+    });
+</script>
+</body>
+</html>

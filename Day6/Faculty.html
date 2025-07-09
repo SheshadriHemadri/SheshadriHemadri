@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Faculty Feedback Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
+    }
+    form {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .rating-group {
+      margin-top: 10px;
+    }
+    .rating-group label {
+      font-weight: normal;
+      margin-right: 10px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="userForm" onsubmit="showData(event)">
+    <h2>Faculty Feedback Form</h2>
+
+    <label for="facultyName">Faculty Name:</label>
+    <input type="text" id="facultyName" name="facultyName" required>
+
+    <label for="Training Attended:">Training Attended:</label>
+<select id="Training Attended" name="Training Attended" required>
+            <option value="">---Select Training---</option>
+            <option value="Python">Python</option>
+            <option value="CSS">CSS</option>
+            <option value="other">Other</option>
+            </select><br><br>
+            
+
+    <label>Overall Rating:</label>
+    <div class="rating-group">
+      <label>
+      <input type="checkbox" name="Rating" value="Reading"> Execellent
+      <input type="checkbox" name="Rating" value="Sports"> Good
+      <input type="checkbox" name="Rating" value="Music">Average
+      <input type="checkbox" name="Rating" value="Music">Poor
+    </label>
+    </div>
+
+    
+
+    <label>Topics Covered:</label>
+    <div class="rating-group">
+      <label><input type="radio" name="knowledge" value="Contant Quality" required> Contant Quality</label>
+      <label><input type="radio" name="knowledge" value="Delivery"> Delivery</label>
+      <label><input type="radio" name="knowledge" value="Interaction"> Interaction</label>
+      <label><input type="radio" name="knowledge" value="Relevance"> Relevance</label>
+    </div>
+
+    <label for="comments">Suggestions/Comments:</label>
+    <textarea id="comments" name="comments" rows="4" placeholder="Write your feedback..."></textarea>
+
+    <button type="submit">Submit Feedback</button>
+  </form>
+
+ <script>
+    function showData(event) {
+      event.preventDefault(); // prevent actual form submission
+
+      let name = document.getElementById("Faculty name").value;
+      let Training = document.querySelector('input[name="gender"]:checked')?.value;
+      let Overall = document.getElementById("country").value;
+
+      let Topics  = [];
+      document.querySelectorAll('input[name="hobby"]:checked').forEach(cb => {
+        hobbies.push(cb.value);
+      });
+
+      let message = `Name: ${name}\nGender: ${Training}\nCountry: ${Overall}\nHobbies: ${Topics.join(", ")}`;
+      alert(message);
+    }
+  </script>
+</body>
+</html>
