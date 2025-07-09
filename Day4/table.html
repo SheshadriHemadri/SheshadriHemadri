@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Printable Code</title>
+	<style>
+		#printable {
+			display: none;
+		}
+		
+		@media print {
+			#non-printable {
+				display: none;
+			}
+			#printable {
+				display: block;
+			}
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="printable">
+		<h1>Printable Content</h1>
+		<p>This content will be printed.</p>
+		<!-- Add the code you want to print here -->
+		<pre id="code"></pre>
+	</div>
+
+	<script>
+		function printContent() {
+			var code = "Your printable code here"; // Replace with your code
+			document.getElementById("code").innerHTML = code;
+			window.print();
+		}
+	</script>
+</body>
+</html>
