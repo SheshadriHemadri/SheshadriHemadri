@@ -1,7 +1,5 @@
 from django.contrib import admin
+from .models import Student
+admin.site.register(Student)
 
 # Register your models here.
-# myapp/admin.py
-from django.contrib import admin
-from .models import Book
-admin.site.register(Book)

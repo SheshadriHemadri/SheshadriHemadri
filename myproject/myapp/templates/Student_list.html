@@ -1,0 +1,15 @@
+<!-- Student_list.html -->
+{% extends "master.html" %} 
+{% block title %}Student List{% endblock %} 
+{% block content %}
+ <h1>Student List</h1> 
+<table border="1" cellpadding="10" cellspacing="0">
+ <thead> <tr>
+ <th>Title</th> 
+<th>Author</th> 
+<th>Publication Date</th>
+ <th>Actions</th> </tr> 
+</thead> <tbody>
+ {% for Student in Students %} 
+<tr> <td>{{ Student.title }}</td> <td>{{Student.author }}</td> <td>{{ Student.publication_date }}</td> <td> 
+<a href="{% url 'Student_update' Student.id %}">Edit</a> | <a href="{% url 'Student_delete' Student.id %}">Delete</a> </td> </tr> {% empty %} <tr><td colspan="4">No Students found.</td></tr> {% endfor %} </tbody> </table> <a href="{% url 'Student_create' %}">Add New Student</a> {% endblock %}

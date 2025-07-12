@@ -1,34 +1,32 @@
 from django.shortcuts import render
-
-# Create your views here.
-
-from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from django.views.generic import ListView
 from django.views.generic.edit import UpdateView
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
-from .models import Book
+from .models import Student
 
-class BookCreateView(CreateView):
-    model = Book
+class StudentCreateView(CreateView):
+    model = Student
     fields = ['title', 'author', 'publication_date']
-    template_name = 'book_form.html'  # Optional: specify custom template
-    success_url = reverse_lazy('book_list')  # URL to redirect to after successful form submission
+    template_name = 'Student_form.html'  # Optional: specify custom template
+    success_url = reverse_lazy('Student_list')  # URL to redirect to after successful form submission
 
-class BookListView(ListView):
-    model = Book
+class StudentListView(ListView):
+    model = Student
     context_object_name = 'books'  # Optional: specify the context variable name in templates
-    template_name = 'book_list.html'  # Optional: specify custom template
+    template_name = 'Student_list.html'  # Optional: specify custom template
 
-class BookUpdateView(UpdateView):
-    model = Book
+class StudentUpdateView(UpdateView):
+    model = Student
     fields = ['title', 'author', 'publication_date']
-    template_name = 'book_form.html'  # Optional: specify custom template
-    success_url = reverse_lazy('book_list')  # URL to redirect to after successful form submission
+    template_name = 'Student_form.html'  # Optional: specify custom template
+    success_url = reverse_lazy('Student_list')  # URL to redirect to after successful form submission
 
-class BookDeleteView(DeleteView):
-    model = Book
-    template_name = 'book_confirm_delete.html'  # Optional: specify custom template
-    success_url = reverse_lazy('book_list')  # URL to redirect to after successful deletion
+class StudentDeleteView(DeleteView):
+    model = Student
+    template_name = 'Student_confirm_delete.html'  # Optional: specify custom template
+    success_url = reverse_lazy('Student_list')  # URL to redirect to after successful deletion
 
+
+# Create your views here.
