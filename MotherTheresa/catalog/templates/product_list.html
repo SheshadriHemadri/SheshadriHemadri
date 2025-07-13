@@ -11,17 +11,41 @@
 
 </head>
 <body>
-    <h1>MENU</h1>
-<marquee>
-<h1> <font color="litepurple"> MTIT College Canteen</font><h1></marquee>
-    {% for product in products %}
-        <div class="product">
-            {% if product.image %}
-                <img src="{{ product.image.url }}" alt="{{ product.name }} ">
-            {% endif %}
-            <h2><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h2>
-            <p>Rs.{{ product.price }}/-</p>
-        </div>
+    
+<h1>Products</h1>
+
+<h3>Filter by Category:</h3>
+
+<form method="get">
+    <input type="text" name="q" placeholder="Search..." value="{{ request.GET.q }}">
+    <button type="submit">Search</button>
+</form>
+
+
+<ul>
+    <li><a href="/">All</a></li>
+    {% for category in categories %}
+        <li><a href="?category={{ category.id }}">{{ category.name }}</a></li>
     {% endfor %}
+</ul>
+
+{% for product in products %}
+    <div class="product">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% endif %}
+        <h2><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h2>
+        <p>Rs{{ product.price }}/-</p>
+<>
+{% if request.GET.category %}
+    <input type="hidden" name="category" value="{{ request.GET.category }}">
+{% endif %}
+    </div>
+{% endfor %}
+
+
+
+
+
 </body>
 </html>
